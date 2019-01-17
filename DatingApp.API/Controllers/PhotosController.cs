@@ -49,11 +49,11 @@ namespace DatingApp.API.Controllers
             return Ok(photo);
         }
 
-
         [HttpPost]
-        public async Task<IActionResult> AddPhotosForUser(int userId, PhotoForCreationDto photoForCreationDto)
+        public async Task<IActionResult> AddPhotosForUser(int userId,
+            [FromForm]PhotoForCreationDto photoForCreationDto)
         {
-                    if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
             var userFromRepo = await _repo.GetUser(userId);
@@ -90,7 +90,7 @@ namespace DatingApp.API.Controllers
             if (await _repo.SaveAll())
             {
                 var photoToReturn = _mapper.Map<PhotoForReturnDto>(photo);
-                return CreatedAtRoute("GetPhoto", new { i = photo.Id }, photoToReturn );
+                return CreatedAtRoute("GetPhoto", new { id = photo.Id }, photoToReturn );
             }
 
             return BadRequest("Could not add photo");
