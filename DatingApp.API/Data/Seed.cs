@@ -28,7 +28,6 @@ namespace DatingApp.API.Data
 
                 _context.Users.Add(user);
             }
-
             _context.SaveChanges();
         }
 
