@@ -85,7 +85,6 @@ namespace DatingApp.API
             services.AddAutoMapper();
             services.AddScoped<LogUserActivity>();
             services.AddTransient<Seed>();
-            services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IDatingRepository, DatingRepository>();
             
         }
