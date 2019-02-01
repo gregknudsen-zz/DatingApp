@@ -23,11 +23,11 @@ export class AdminService {
     return this.http.get(this.baseUrl + 'admin/photosForModeration');
   }
 
-  approvePhoto(photoId) {
-    return this.http.post(this.baseUrl + '/admin/approvePhoto/' + photoId, {});
+  approvePhoto(photoId: string) {
+    return this.http.post(this.baseUrl + 'admin/approvePhoto/' + photoId, {});
   }
 
-  rejectPhoto(photoId) {
-    return this.http.post(this.baseUrl + '/admin/rejectPhoto/' + photoId, {});
+  rejectPhoto(photoId: string) {
+    return this.http.post(this.baseUrl + 'admin/rejectPhoto/' + photoId, {});
   }
 }
