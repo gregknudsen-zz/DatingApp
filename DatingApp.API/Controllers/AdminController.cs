@@ -24,7 +24,7 @@ namespace DatingApp.API.Controllers
         private Cloudinary _cloudinary ;
 
         public AdminController(
-            DataContext context, 
+            DataContext context,
             UserManager<User> userManager,
             IOptions<CloudinarySettings> cloudinaryConfig)
         {
@@ -113,7 +113,7 @@ namespace DatingApp.API.Controllers
             var photo = await _context.Photos
             .IgnoreQueryFilters()
             .FirstOrDefaultAsync(p => p.Id == photoId);
-        
+
             photo.IsApproved = true;
 
             await _context.SaveChangesAsync();
